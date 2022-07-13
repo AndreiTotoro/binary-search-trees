@@ -20,6 +20,17 @@ class Tree
     root_node
   end
 
+  def insert(value, node = @root)
+    return Node.new(value) if node.nil?
+
+    if value < node.data
+      node.left_child = insert(value, node.left_child)
+    else
+      node.right_child = insert(value, node.right_child)
+    end
+    node
+  end
+
   def show_tree(node, prefix = '', is_left = true)
     show_tree(node.right_child, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right_child
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
