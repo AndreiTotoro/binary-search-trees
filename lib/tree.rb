@@ -32,7 +32,17 @@ class Tree
   end
 
   def delete(value, node = @root)
-    return nil if node.nil? or node.data == value
+    return nil if node.nil?
+
+    if node.data == value
+      if !node.left_child.nil?
+        return node.left_child
+      elsif !node.right_child.nil?
+        return node.right_child
+      end
+
+      return nil
+    end
 
     if value < node.data
       node.left_child = delete(value, node.left_child)
