@@ -35,7 +35,15 @@ class Tree
     return nil if node.nil?
 
     if node.data == value
-      if !node.left_child.nil?
+      if !node.left_child.nil? && !node.right_child.nil?
+        current_node = node.right_child
+        until current_node.nil?
+          return current_node if current_node.left_child.nil?
+
+          current_node = current_node.left_child
+        end
+
+      elsif !node.left_child.nil?
         return node.left_child
       elsif !node.right_child.nil?
         return node.right_child
