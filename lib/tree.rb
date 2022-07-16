@@ -31,6 +31,17 @@ class Tree
     node
   end
 
+  def delete(value, node = @root)
+    return nil if node.nil? or node.data == value
+
+    if value < node.data
+      node.left_child = delete(value, node.left_child)
+    else
+      node.right_child = delete(value, node.right_child)
+    end
+    node
+  end
+
   def show_tree(node, prefix = '', is_left = true)
     show_tree(node.right_child, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right_child
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
