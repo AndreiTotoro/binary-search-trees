@@ -7,5 +7,6 @@ tree.insert(53)
 tree.insert(22)
 tree.insert(6)
 
-tree.delete(23)
+tree.delete(22)
+tree.delete(54)
 tree.show_tree(tree.root)
