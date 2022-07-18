@@ -31,10 +31,22 @@ class Tree
     node
   end
 
+  def rebuilder(left_tree, right_tree)
+    return left_tree if right_tree.nil?
+
+    if left_tree.data < right_tree.data
+      right_tree.left_child = rebuilder(left_tree, right_tree.left_child)
+    else
+      right_tree.right_child = rebuilder(left_tree, right_tree.right_child)
+    end
+    right_tree
+  end
+
   def delete(value, node = @root)
     return node if node.nil?
 
     if value == node.data
+      return rebuilder(node.left_child, node.right_child) if !node.left_child.nil? && !node.right_child.nil?
       return node.right_child if node.left_child.nil?
       return node.left_child if node.right_child.nil?
     end
