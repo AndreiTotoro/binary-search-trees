@@ -59,6 +59,16 @@ class Tree
     node
   end
 
+  def find(value, node = @root)
+    return node if value == node.data
+
+    if value < node.data
+      find(value, node.left_child)
+    else
+      find(value, node.right_child)
+    end
+  end
+
   def show_tree(node, prefix = '', is_left = true)
     show_tree(node.right_child, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right_child
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
