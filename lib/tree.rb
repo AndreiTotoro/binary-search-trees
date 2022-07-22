@@ -1,5 +1,5 @@
 require_relative 'node'
-
+require_relative 'queue'
 class Tree
   def initialize(arr)
     @data = arr.sort.uniq

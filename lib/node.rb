@@ -7,3 +7,12 @@ class Node
 
   attr_accessor :data, :left_child, :right_child
 end
+
+class QueueNode
+  def initialize(data = nil, next_node = nil)
+    @data = data
+    @next_node = next_node
+  end
+
+  attr_accessor :data, :next_node
+end
